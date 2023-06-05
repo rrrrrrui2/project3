@@ -1,0 +1,52 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: zuul
+
+leyou:
+  jwt:
+    pubKeyPath: D:\\SSM\\rsa.pub  #公钥地址
+    cookieName: LY_TOKEN
+  filter:
+    allowPaths:
+      - /auth
+      - /search
+      - /user/register
+      - /user/check
+      - /user/code
+      - /item
+#zuul:
+#  routes:
+#    service-provider:   #路由的名称，可以随便写，习惯上服务名
+#       path: /item/**
+#       url: http://localhost:8081
+
+zuul:
+  routes:
+    elasticsearch: /search/**
+    user-service: /user/**
+    auth-service: /auth/**
+    cart-service: /cart/**
+    order-service: /order/**
+  add-host-header: true
+  sensitive-headers: #默认覆盖敏感头信息
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+    registry-fetch-interval-seconds: 5
+
+ribbon:
+  ConnectTimeout: 5000 # 连接超时时间(ms)
+  ReadTimeout: 5000 # 通信超时时间(ms)
+hystrix:
+  command:
+    default:
+    execution:
+    isolation:
+    thread:
+    timeoutInMilliseconds: 60000 # 设置hystrix的超时时间为6000ms
+

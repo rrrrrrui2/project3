@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: elasticsearch
+  main:
+    allow-bean-definition-overriding: true
+
+server:
+  port: 8083
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+    instance:
+      lease-renewal-interval-in-seconds: 5
+      lease-expiration-duration-in-seconds: 15

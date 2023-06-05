@@ -1,0 +1,19 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: goods-web
+  main:
+    allow-bean-definition-overriding: true
+  thymeleaf:
+    cache: false
+  rabbitmq:
+    host: 192.168.199.1
+    virtual-host: /zp
+    username: zp
+    password: zp
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+    registry-fetch-interval-seconds: 5
